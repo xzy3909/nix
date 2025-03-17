@@ -18,6 +18,9 @@
         [ pkgs.neovim
 	  pkgs.mkalias
           pkgs.notion-app
+	  pkgs.aldente
+	  pkgs.moonlight-qt
+	  pkgs.python3
         ];
 
       homebrew = {
@@ -26,12 +29,20 @@
 	  "mas"
 	];
 	casks = [
-	  "firefox"
+	  "tidal"
+          "topnotch"
+	  "microsoft-office"
+	  "raycast"
+	  "crossover"
+	  "calibre"
+	  "anaconda"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
 	};
 	onActivation.cleanup = "zap";
+	onActivation.autoUpdate = true;
+	onActivation.upgrade = true;
       };
       # Spotlight script
       system.activationScripts.applications.text = let
@@ -53,6 +64,20 @@
          ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
        done
            '';
+
+      # macOS system settings.
+      system.defaults = {
+	dock.autohide = true;
+	dock.persistent-apps = [
+	  "${pkgs.notion-app}/Applications/Notion.app"
+          "/System/Applications/Mail.app"
+          "/System/Applications/Calendar.app"
+	];
+	finder.FXPreferredViewStyle = "clmv";
+	loginwindow.GuestEnabled = false;
+	NSGlobalDomain.AppleICUForce24HourTime = true;
+	NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
