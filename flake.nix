@@ -21,12 +21,14 @@
 	  pkgs.aldente
 	  pkgs.moonlight-qt
 	  pkgs.python3
+	  pkgs.neofetch
         ];
 
       homebrew = {
         enable = true;
 	brews = [
 	  "mas"
+          "mpv"
 	];
 	casks = [
 	  "tidal"
@@ -36,6 +38,7 @@
 	  "crossover"
 	  "calibre"
 	  "anaconda"
+	  "netnewswire"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
