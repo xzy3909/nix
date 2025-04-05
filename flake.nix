@@ -33,19 +33,22 @@
 	casks = [
 	  "tidal"
           "topnotch"
-	  "microsoft-office"
 	  "raycast"
 	  "crossover"
 	  "calibre"
 	  "anaconda"
 	  "netnewswire"
+	  "microsoft-office"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
+	  "Microsoft Word" = 462054704;
+	  "Microsoft Excel" = 462058435;
+	  "Microsoft OneDrive" = 823766827;
 	};
 	onActivation.cleanup = "zap";
-	onActivation.autoUpdate = true;
-	onActivation.upgrade = true;
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
       };
       # Spotlight script
       system.activationScripts.applications.text = let
