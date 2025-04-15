@@ -6,16 +6,18 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nixvim.url = "github:nix-community/nixvim";
   };
-
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew }:
+  
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, nixvim }:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ pkgs.neovim
+        [ 
+	  pkgs.neovim
 	  pkgs.mkalias
           pkgs.notion-app
 	  pkgs.aldente
@@ -29,6 +31,16 @@
 	brews = [
 	  "mas"
           "mpv"
+	  "tmux"
+	  "tpm"
+	  "bc"
+	  "coreutils"
+	  "gawk"
+	  "gh"
+	  "glab"
+	  "gsed"
+	  "jq"
+	  "nowplaying-cli"
 	];
 	casks = [
 	  "tidal"
@@ -39,6 +51,9 @@
 	  "anaconda"
 	  "netnewswire"
 	  "microsoft-office"
+	  "font-monaspace-nerd-font"
+	  "font-noto-sans-symbols-2"
+          #"tor-browser"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
@@ -57,7 +72,7 @@
         paths = config.environment.systemPackages;
         pathsToLink = "/Applications";
        };
-     in
+      in
        pkgs.lib.mkForce ''
        # Set up applications.
        echo "setting up /Applications..." >&2
