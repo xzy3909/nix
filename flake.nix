@@ -6,10 +6,9 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    nixvim.url = "github:nix-community/nixvim";
   };
   
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, nixvim }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew}:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -17,7 +16,6 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	  pkgs.neovim
 	  pkgs.mkalias
           pkgs.notion-app
 	  pkgs.aldente
@@ -54,6 +52,7 @@
 	  "font-monaspace-nerd-font"
 	  "font-noto-sans-symbols-2"
           #"tor-browser"
+	  "steam"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
@@ -134,6 +133,12 @@
 
 	  };
 	}
+	#nixvim.nixDarwinModules.nixvim
+	#{
+	  #programs.nixvim = {
+	    #enable = true;
+	  #};
+	#}
       ];
     };
     # Expose the package set, including overlays, for convenience.
