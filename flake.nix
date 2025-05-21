@@ -22,6 +22,7 @@
 	  pkgs.moonlight-qt
 	  pkgs.python3
 	  pkgs.neofetch
+	  pkgs.qbittorrent 
         ];
 
       homebrew = {
