@@ -54,6 +54,7 @@
 	  "font-noto-sans-symbols-2"
           #"tor-browser"
 	  "steam"
+	  "rar"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
@@ -105,6 +106,8 @@
 
       # Enable alternative shell support in nix-darwin.
       # programs.fish.enable = true;
+
+      system.primaryUser = "xiaziyuan";
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
