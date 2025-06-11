@@ -42,7 +42,7 @@
 	  "nowplaying-cli"
 	];
 	casks = [
-	  "tidal"
+          #"tidal"
           "topnotch"
 	  "raycast"
 	  "crossover"
