@@ -34,12 +34,6 @@
 	  "tpm"
 	  "bc"
 	  "coreutils"
-	  "gawk"
-	  "gh"
-	  "glab"
-	  "gsed"
-	  "jq"
-	  "nowplaying-cli"
 	];
 	casks = [
           #"tidal"
@@ -58,9 +52,6 @@
 	];
 	masApps = { 
           #"Yoink" = 457622435;
-          #"Microsoft Word" = 462054704;
-          #"Microsoft Excel" = 462058435;
-          #"Microsoft OneDrive" = 823766827;
 	};
 	onActivation.cleanup = "zap";
         onActivation.autoUpdate = true;
