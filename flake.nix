@@ -49,6 +49,7 @@
           #"tor-browser"
 	  "steam"
 	  "rar"
+          "virtualbox@beta"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
