@@ -19,7 +19,7 @@
 	  pkgs.mkalias
           pkgs.notion-app
 	  pkgs.aldente
-	  pkgs.moonlight-qt
+          #pkgs.moonlight-qt
 	  pkgs.python3
 	  pkgs.neofetch
 	  pkgs.qbittorrent 
@@ -50,6 +50,7 @@
 	  "steam"
 	  "rar"
           "virtualbox@beta"
+	  "moonlight"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
