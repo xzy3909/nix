@@ -6,9 +6,10 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    nixvim.url = "github:nix-community/nixvim";
   };
   
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew}:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, nixvim}:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -130,12 +131,12 @@
 
 	  };
 	}
-	#nixvim.nixDarwinModules.nixvim
-	#{
-	  #programs.nixvim = {
-	    #enable = true;
-	  #};
-	#}
+	nixvim.nixDarwinModules.nixvim
+	{
+	  programs.nixvim = {
+	    enable = true;
+	  };
+	}
       ];
     };
     # Expose the package set, including overlays, for convenience.
