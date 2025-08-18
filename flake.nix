@@ -6,10 +6,12 @@
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:nix-community/nixvim";
   };
   
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, nixvim}:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, home-manager, nixvim}:
   let
     configuration = { pkgs, config, ... }: {
       nixpkgs.config.allowUnfree = true;
@@ -24,8 +26,9 @@
 	  pkgs.python3
 	  pkgs.neofetch
 	  pkgs.qbittorrent 
+	  pkgs.iterm2
+	  pkgs.obsidian
         ];
-
       homebrew = {
         enable = true;
 	brews = [
@@ -95,6 +98,25 @@
 	NSGlobalDomain.AppleInterfaceStyle = "Dark";
       };
 
+      # Set system shells zsh.
+      environment.shells = [ pkgs.zsh ];
+
+      # Enable yabai window manager.
+      services.yabai = {
+        enable = true;
+	config = {
+	  focus_follows_mouse = "autoraise";
+          mouse_follows_focus = "off";
+          window_placement    = "second_child";
+          window_opacity      = "off";
+          top_padding         = 36;
+          bottom_padding      = 10;
+          left_padding        = 10;
+          right_padding       = 10;
+          window_gap          = 10;
+	};
+      };
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -135,6 +157,24 @@
 	{
 	  programs.nixvim = {
 	    enable = true;
+	    #colorschemes.catppuccin.enable = true;
+	    colorschemes.rose-pine.enable = true;
+            plugins.lualine.enable = true;
+	  };
+	}
+	home-manager.darwinModules.home-manager
+	{
+	  home-manager.useGlobalPkgs = true;
+	  home-manager.useUserPackages = true;
+	  #home-manager.users.xiaziyuan = ./home.nix;
+	}
+	{
+	  programs.zsh = {
+	    enable = true;
+	    enableAutosuggestions = true;
+	    enableCompletion = true;
+	    enableSyntaxHighlighting = true;
+	    enableFzfHistory = true;
 	  };
 	}
       ];
