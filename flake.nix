@@ -28,6 +28,7 @@
 	  pkgs.qbittorrent 
 	  pkgs.iterm2
 	  pkgs.obsidian
+	  pkgs.vscode
         ];
       homebrew = {
         enable = true;
