@@ -24,11 +24,12 @@
 	  pkgs.aldente
           #pkgs.moonlight-qt
 	  pkgs.python3
-	  pkgs.neofetch
-	  pkgs.qbittorrent 
+	  pkgs.fastfetch
+	  #pkgs.qbittorrent 
 	  pkgs.iterm2
 	  pkgs.obsidian
 	  pkgs.vscode
+	  pkgs.telegram-desktop
         ];
       homebrew = {
         enable = true;
@@ -45,17 +46,22 @@
           "topnotch"
 	  "raycast"
 	  "crossover"
-	  "calibre"
+	  #"calibre"
 	  "anaconda"
 	  "netnewswire"
 	  "microsoft-office"
-	  "font-monaspace-nerd-font"
+	  "font-monaspice-nerd-font"
 	  "font-noto-sans-symbols-2"
           #"tor-browser"
 	  "steam"
 	  "rar"
           "virtualbox@beta"
 	  "moonlight"
+	  #"qbittorrent"
+	  "remote-desktop-manager"
+	  "xquartz"
+	  "windterm"
+	  "docker-desktop"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
@@ -69,7 +75,7 @@
         env = pkgs.buildEnv {
         name = "system-applications";
         paths = config.environment.systemPackages;
-        pathsToLink = "/Applications";
+        pathsToLink = ["/Applications"];
        };
       in
        pkgs.lib.mkForce ''
@@ -106,7 +112,7 @@
       services.yabai = {
         enable = true;
 	config = {
-	  focus_follows_mouse = "autoraise";
+	  #focus_follows_mouse = "autoraise";
           mouse_follows_focus = "off";
           window_placement    = "second_child";
           window_opacity      = "off";
@@ -158,7 +164,6 @@
 	{
 	  programs.nixvim = {
 	    enable = true;
-	    #colorschemes.catppuccin.enable = true;
 	    colorschemes.rose-pine.enable = true;
             plugins.lualine.enable = true;
 	  };
@@ -167,7 +172,9 @@
 	{
 	  home-manager.useGlobalPkgs = true;
 	  home-manager.useUserPackages = true;
-	  #home-manager.users.xiaziyuan = ./home.nix;
+	  #home-manager.users.xiaziyuan = import ./home.nix;
+	  #home-manager.users.xiaziyuan.home.homeDirectory = "/home";
+	  #home-manager.users.xiaziyuan.home.stateVersion = "25.11";
 	}
 	{
 	  programs.zsh = {
