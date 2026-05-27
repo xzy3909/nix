@@ -30,6 +30,8 @@
 	  pkgs.obsidian
 	  pkgs.vscode
 	  pkgs.telegram-desktop
+	  pkgs.docker
+	  pkgs.colima
         ];
       homebrew = {
         enable = true;
@@ -55,13 +57,11 @@
           #"tor-browser"
 	  "steam"
 	  "rar"
-          "virtualbox@beta"
+          #"virtualbox@beta"
 	  "moonlight"
 	  #"qbittorrent"
-	  "remote-desktop-manager"
+	  #"remote-desktop-manager"
 	  "xquartz"
-	  "windterm"
-	  "docker-desktop"
 	];
 	masApps = { 
           #"Yoink" = 457622435;
@@ -105,6 +105,10 @@
 	NSGlobalDomain.AppleInterfaceStyle = "Dark";
       };
 
+      environment.variables = {
+  	DOCKER_HOST =
+    	  "unix:///Users/xiaziyuan/.colima/default/docker.sock";
+      };      
       # Set system shells zsh.
       environment.shells = [ pkgs.zsh ];
 
