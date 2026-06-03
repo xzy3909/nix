@@ -20,6 +20,7 @@
       environment.systemPackages =
         [ 
 	  pkgs.mkalias
+	  pkgs.ncdu
           pkgs.notion-app
 	  pkgs.aldente
           #pkgs.moonlight-qt
